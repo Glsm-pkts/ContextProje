@@ -16,7 +16,7 @@ const Checkout = () => {
   const total = items.reduce(
     (total, item) => total + (item.price * item.amount),
     0
-  ).toFixed(2); // Toplam fiyatı virgülden sonra iki basamakla sınırlıyoruz
+  ).toFixed(); // Toplam fiyatı virgülden sonra iki basamakla sınırlıyoruz
 
   return (
     <div className="d-grid gap-1 p-4 m-auto">
@@ -28,14 +28,14 @@ const Checkout = () => {
       ) : (
         <>
           <h3>
-            Ürünlerin toplam fiyatı <span className="text-success p-1">{total} ₺</span> 
+            Ürünlerin toplam fiyatı <span className="text-success p-1">{total} $</span> 
           </h3>
           {/** contexte tutulan items dizisindeki her bir eleman için kart basma */}
           {items.map((item) => (
             <div className="d-flex border shadow justify-content-evenly align-items-center h-50" key={item.id}>
               <img className="h-100 rounded" src={item.image} alt={item.name} />
               <h3>{item.name}</h3>
-              <h3 className="text-success">{(item.price * item.amount).toFixed(3)}₺</h3> {/* Fiyatı virgülden sonra iki basamakla sınırlıyoruz */}
+              <h3 className="text-success">{(item.price * item.amount).toFixed()}$</h3> {/* Fiyatı virgülden sonra iki basamakla sınırlıyoruz */}
               <p className="fw-bold">Miktar: {item.amount}</p>
               <button className="btn btn-dark" onClick={() => addToCart(item)}>Ekle</button>
               <button onClick={() => deleteFromCart(item)} className="btn btn-danger">
